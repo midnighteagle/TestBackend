@@ -30,6 +30,7 @@
 - after this command run it create two more one folder isnode_modules and second is package-lock.json 
 - now keep the script set as :
 - package.json file.
+
     ```json
         "scripts": {
             "dev": "nodemon src/index.js"
