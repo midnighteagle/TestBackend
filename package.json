@@ -1,0 +1,19 @@
+{
+  "name": "backend-revised",
+  "version": "1.0.0",
+  "description": "revising the backend for the starting the project by new one learning.",
+  "keywords": [
+    "revising",
+    "backend",
+    "myself",
+    "helpingMe",
+    "ChaiAurCode"
+  ],
+  "license": "ISC",
+  "author": "Akshat Arya.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  }
+}
