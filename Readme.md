@@ -111,6 +111,19 @@
 ``` bash 
     npm i dotenv
 ```
+- [x] By the help of the require Syntax.
+```javaScript
+    require ('dotenv').config({path: './env'});
+```
+- [x] By the help of the import Syntax.
+```javaScript
+    import dotenv from "dotenv";
+
+    dotenv.config({
+        path: './.env'
+    })
+```
+- [x] Implementation in the CodeStep.md.
 
 - [x] then install the package moongoose 
 ``` bash 
@@ -134,8 +147,100 @@
 - [x] To see the professional Approach go to CodeStep.md
 
 
+
+### Now create a app using Express:-
+[ExpressDocumentation -ReadMe](https://expressjs.com/en/5x/api.html) About request, response
+
+#### Request.body
+- [x] Contains key-value pairs of data submitted in the request body. By default, it is undefined, and is populated when you use body-parsing middleware such as express.json() or express.urlencoded().
+```javaScript
+    const express = require('express')
+
+    const app = express()
+
+    app.use(express.json()) // for parsing application/json
+    app.use(express.urlencoded({ extended: true })) // for  parsing application/x-www-form-urlencoded
+
+    app.post('/profile', (req, res, next) => {
+        console.log(req.body)
+        res.json(req.body)
+    })
+
+```
+
+#### req.cookies
+- [x] When using cookie-parser middleware, this property is an object that contains cookies sent by the request. If the request contains no cookies, it defaults to {}.
+```javaScript
+    // Cookie: name=tj
+    console.dir(req.cookies.name)
+    // => "tj"
+
+```
+
 - [x] then need to install package express
 ``` bash 
     npm i express
 ```
+- [x] Express are used to make a app 
+```javaScript
+    import express from "express";
 
+    const app = express();
+```
+- [x] We have to install cookie-parser
+``` bash 
+    npm i cookie-parser
+```
+
+- [x] We have to install cors
+``` bash 
+    npm i cors
+```
+Cors Stands for cross origin resource sharing , this means that (Scheme +Host + port) like https://facebook.com/profile and another one is https://flipkart.com/cart these are diffrent web orgin so cors restrict the sharein resource from the between these help overcome the security issue. 
+
+### Configration of cors and Cookie-Parser in the App.js
+```javaScript
+import cors from "cors";
+        app.use(cors({
+        origin: process.env.CORS_ORIGIN,
+        Credential: true
+    }));
+
+app.use(express.json({limit: "16kb"}))
+app.use(express.urlencoded({extended: true,limit: "16kb"}))
+app.use(express.static("public"))
+app.use(cookieparser())
+```
+
+## Adding the asyncHandler in the utilities file(utils)
+- [x] It is made due to the handle the async and await work like db connection take time to connect  
+```javaScript
+    // for better understanding that is higher order function.
+    const asyncHandler = () => {}
+    const asyncHandler = (func)=>{()=>{}}
+    const asyncHandler = (func) =>() =>{}
+    const asyncHandler = (func) =>async() =>{}
+    const asyncHandler = (fn) => async() => {}
+```
+### AsyncHandler using tryCatch 
+```javaScript
+    const asyncHandler = (fun)=>async(req, res, next){
+    try {
+        await fun(req, res, next)
+    } catch (error) {
+        res.status(error.code || 500).json({
+            success: false,
+            message:error.message
+        })
+    }
+}
+export {asyncHandler};
+```
+### Api Errors
+[Documentation of ApiError - ReadMe](https://nodejs.org/api/errors.html)
+- [x] It Shows the types of errors.
+- [x] Its Implementation to Fix the Api error in codeStep.js
+
+### ApiResponse
+- [x] This is used to give the response from the Api to User 
+- [x] Its Implementation is done in the CodeStep.md.
