@@ -27,19 +27,33 @@
     npm i -D nodemon
 
     ```
+- after this command run it create two more one folder isnode_modules and second is package-lock.json 
+- now keep the script set as :
+- package.json file.
+    ```json
+        "scripts": {
+            "dev": "nodemon src/index.js"
+        }
+
+    ```
 
 
 ## Store Images in the file.(public/temp)
+- create the file that name is .gitkeep because the git doesnot track the folder it track only files.
 
-
-## create gitignores.
-
-## enviroment variable(.env).
-
-## enviroment varible sample(.envSmaple)
 
 ## create Source folder(src)
 - createing file in the src folders :
     - touch app.js constants.js index.js
 - creating the folders :
     - 
+
+## create gitignores.
+- On the Web there is a gitignore generator is available for set the file .gitignore
+- [GitIgnore-Generator](https://mrkandreev.name/snippets/gitignore-generator/#Node)  this is help to configure the gitignore file.
+
+
+
+## enviroment variable(.env).
+
+## enviroment varible sample(.envSmaple)
