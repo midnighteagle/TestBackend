@@ -93,3 +93,8 @@
         .env
         .env.*
  ```
+### --------------BASIC SETUP DONE-----------------
+
+# Modular code and reuseable code that help that use many of times.
+
+- [x] 
