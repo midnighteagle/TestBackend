@@ -23,6 +23,8 @@
 
 ## created the new file name is json file (package.json)
 - To restart the server automatically we need to install nodemon 
+- [nodemon Ducumentation - ReadMe](https://www.npmjs.com/package/nodemon)
+
     ```bash
     npm i -D nodemon
 
@@ -45,9 +47,13 @@
 
 ## create Source folder(src)
 - createing file in the src folders :
-    - touch app.js constants.js index.js
+    ```bash
+         touch app.js constants.js index.js 
+     ```
 - creating the folders :
-    - 
+    ```bash
+         mkdir controllers db middlewares models routes utils
+     ```
 
 ## create gitignores.
 - On the Web there is a gitignore generator is available for set the file .gitignore
@@ -58,3 +64,32 @@
 ## enviroment variable(.env).
 
 ## enviroment varible sample(.envSmaple)
+
+## prettier Documentation
+- [NPM Prettier Documentaion - ReadMe](https://www.npmjs.com/package/prettier)
+- [github Documentation - ReadMe]( https://github.com/prettier/prettier)
+
+- Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
+``` bash 
+    npm i -D prettier
+```
+- Create prettierrc file 
+``` prettier
+        {
+        "singleQuotes" :false,
+        "bracketSpacing": true,
+        "tabWidth": 2,
+        "semi": true,
+        "trailingComma": "es5"
+        }
+```
+
+- Create Prettierignore file
+``` prettier
+        /.vscode
+        /node_modules
+        ./dist
+        *.env
+        .env
+        .env.*
+ ```
