@@ -1,17 +1,9 @@
-import mongoose from "mongoose";
+// require ('dotenv').config({path: './env'})
+import dotenv from "dotenv";
 
-(async()=>{
-        try{
-            await mongoose.connnect(`${process.env.MONGODB_URI}/{DB_NAME}`)
-            app.on("error", (error)=>{
-                console.log("Error: ", error);
-                throw error
-            })
-            app.listen(process.env.PORT,()=>{
-                console.log(`app is listening on ${process.env.PORT}`);
-            })
-        }catch(error){
-            console.log("Error: ",error)
-            throw error;
-        }
-    })()
+import ConnectDB from "./db/index.js";
+
+dotenv.config({
+        path: './.env'
+    })
+ConnectDB();
