@@ -97,4 +97,44 @@
 
 # Modular code and reuseable code that help that use many of times.
 
-- [x] 
+## DataBase Connection (mongoose Atlas).
+- [x] Go to mongoose Atlas 
+- [x] login With Your Representative accounts [Google, github]
+- [x] Go to database and click on connect 
+- [x] Select the compass for that you got a String like
+- [x] mongodb+srv://Akshat:<db_password>@Akshat.8grpc7a.mongodb.net/ 
+
+- [x] keep this string in the env like MONGO_URI = String;
+### We Use Two Method by like use in index.js and other is In db Folder.
+- [x] Initially we go with the index.js method . this method are implemented seprately in CodeStep.md
+- [x] First we need to install dotenv from npm packages
+``` bash 
+    npm i dotenv
+```
+
+- [x] then install the package moongoose 
+``` bash 
+    npm i mongoose
+```
+
+
+- [x] mongoose connection is in one line of code but it is not a professional Approach.lets See Oneline Approach
+- [x] [NPM Mongoose Ducumentation - ReadMe](https://www.npmjs.com/package/mongoose)
+- [x] [GitHub Mongoose Ducumentation ReadMe](https://github.com/Automattic/mongoose)
+
+``` JavaScript
+    import { createRequire } from 'https://deno.land/std@0.177.0/node/module.ts';
+    const require = createRequire(import.meta.url);
+
+    const mongoose = require('mongoose');
+
+    mongoose.connect('mongodb://127.0.0.1:27017/test')
+    .then(() => console.log('Connected!'));
+```
+
+
+- [x] then need to install package express
+``` bash 
+    npm i express
+```
+
