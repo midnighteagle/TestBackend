@@ -244,3 +244,19 @@ export {asyncHandler};
 ### ApiResponse
 - [x] This is used to give the response from the Api to User 
 - [x] Its Implementation is done in the CodeStep.md.
+
+### Now work with the models
+- [x] this is the syntax to generate the mongoose schema 
+```javaScript
+    import mongoose, { Schema } from "mongoose";
+
+    const videoSchema = new Schema(
+        {
+
+        },
+        {
+            timestamps:true,
+        }
+    )
+export const Video = mongoose.model('Video',userSchema)
+```
