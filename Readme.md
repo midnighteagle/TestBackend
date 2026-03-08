@@ -262,3 +262,42 @@ export {asyncHandler};
     )
 export const Video = mongoose.model('Video',userSchema)
 ```
+- here we created a Schema by the new keyword with the addition of Schema keep in the variable of the const videoSchema then after we put the object of two which second object is timeStamp that say about created at and updated at. in first object we define the property of Schema with the object and in property object we put the property off that property. 
+
+- for Better understanding of the Schema go to the CodeStep.md.
+
+# This is for the video.model.js
+#### here istalling new npm package that is mongoose-Aggregate-paginate-v2
+- [x] it is used to write mongoose aggregation query and pagination.
+- [Documentation By NPM - ReadMe](https://www.npmjs.com/package/mongoose-aggregate-paginate-v2)
+- [Mongoose Aggregation PipeLine - ReadMe](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/)
+``` bash 
+    npm i mongoose-aggregate-paginate-v2
+```
+
+### Here we also Create a mongoose middlewares by default and costum too
+- to understand in detail. [Click Here](https://mongoosejs.com/docs/middleware.html)
+
+- Now encrypting the password 
+- we using the bcrypt and jwt for that.
+``` javaScript
+// incrypting the password by using the jwt  it is done only sometimes like during first time and next is in changeing the password.
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+userSchema.pre("save",async function(next){
+    if(!this.isModified('password')) return next();
+    this.password =  bcrypt.hash(this.password,10);
+    next();
+} )
+
+
+```
+- [x] here bcrypt compare the password from enterd password and save password
+
+``` javaScript
+// here bycrypt also compare the password now entered and save passwords.
+userSchema.methods.isPasswordCorrect = async function (password){
+    return await bcrypt.compare(password, this.password)
+}
+
+```
