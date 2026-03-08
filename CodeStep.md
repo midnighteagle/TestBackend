@@ -203,17 +203,137 @@ export const User = mongoose.model('User',userSchema);
 - video.model.js
 ```javaScript
 import mongoose, { Schema } from "mongoose";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const videoSchema = new Schema(
     {
+        videoFile:{
+            type: String, // by the cloudinary url se.
+            required : true,
         
+        },
+        thumbnail:{
+            type: String, // by the cloudinary url se.
+            required : true,
         
+        },
+        title:{
+            type: String,
+            required : true,
+        
+        },
+        description:{
+            type: String,
+            required : true,
+        
+        },
+        duration:{
+            type: Number, // by the cloudinary url.
+            required : true,
+        
+        },
+        views:{
+            type: Number,
+            default: 0,
+        
+        },
+        isPublished:{
+            type: Boolean,
+            default: false,
+        
+        },
+        owner:{
+            type: Schema.type.ObjectId,
+            ref: 'User',
+        
+        }
 
         
+
     },
     {
         timestamps:true,
     }
 )
-export const Video = mongoose.model('Video',userSchema);
+videoSchema.plugin(mongooseAggregatePaginate) // for that read in Readme.md.
+export const Video = mongoose.model('Video',videoSchema) 
+
+```
+- [x]isko hindi me likhte hai :-
+- pehle ek Schema ka nam as variable define krenge.
+- mongoose ke new keyword ko bolenge ki mongoose ka new keyWord ek Schema dena , aur usko parenthesis () dete hai 
+- parenthesis ke andar do Curly braces dete hai with comma.
+- ek curly braces ke andar schema ki properties ko define krte hai.
+- dusre me curly braces ke andar timestamp define krte hai.
+- uske baad export kr dete hai new variable bana ke 
+- Aur mongoose ko bolte hai ki mongoose ek model bana ke dena jisme new export variable name aur Schema ka name refrence me dete hai.
+
+- #### [x] Refrence from the other dbmodels like:
+```JavaScript
+    owner:{
+            type: Schema.type.ObjectId, 
+            ref: 'User',
+        
+        }
+```
+- isko Aishe bol sakte hai ki mongoose ek Schema ka type dena by ObjectId 
+- ref lete hai by the existing models. 
+
+- ##### [x] For user model we using the bycrypt not bcryptjs
+- it is help to encrypt the password. for more detail [click here](https://www.npmjs.com/package/bcryptjs)
+```bash
+    npm i bcrypt
+```
+```bash
+    npm i bcrypt.js
+```
+- ##### [x] One more packages that jwt (jsonwebtoken)
+- it is help us to create the token and verify 
+- payload is the data that should be encrypted by the JWT. for detailed [click here](https://www.npmjs.com/package/jsonwebtoken)
+```bash
+    npm i jsonwebtoken
+```
+- [X] REFRESH TOKEN GENERATE KRENGE;
+```javaScript
+import jwt from "jsonwebtoken";
+// userSchema RefreshTokenGenerate hota hai using JWT
+userSchema.methods.generateRefreshToken = async function(){
+    return jwt.sign(
+        {
+            _id: this.id,
+            
+
+        },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+        }
+    )
+}
+
+
+```
+
+- ### [x] This is the part of mongoose.
+- [X] ACESS TOKEN GENERATE KRENGE;
+```javaScript
+import jwt from "jsonwebtoken";
+// userSchema AccessTokenGenerate hota hai using JWT
+userSchema.methods.generateAccessToken = async function(){
+    return jwt.sign(
+        {
+            _id: this.id,
+            email: this.email,
+            username: this.username,
+            fullName: this.fullName,
+            
+
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
+        }
+    )
+}
+
 ```
