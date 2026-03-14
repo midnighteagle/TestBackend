@@ -1,6 +1,6 @@
 # Connection Of DataBase In Index.js
 ``` JavaScript
-    // we are Using Iffee for now
+// we are Using Iffee for now
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import express from "express";
@@ -27,9 +27,13 @@ dotenv.config();
     })()
 ```
 - [x] This is the First Approach but i pollute the index.js  so we try the new Approach.
+
 # Connection Of DataBase In Very Professional Ways.
+
 - [x] New Approach is next for connecting the database.
+
 #### src/db/index.js
+
 ``` javaScript
 import mongoose from "mongoose";
 
@@ -288,7 +292,7 @@ export const Video = mongoose.model('Video',videoSchema)
     npm i bcrypt.js
 ```
 - ##### [x] One more packages that jwt (jsonwebtoken)
-- it is help us to create the token and verify 
+- it is help us to create the token and verify.
 - payload is the data that should be encrypted by the JWT. for detailed [click here](https://www.npmjs.com/package/jsonwebtoken)
 ```bash
     npm i jsonwebtoken
@@ -336,4 +340,41 @@ userSchema.methods.generateAccessToken = async function(){
     )
 }
 
+```
+
+- ### [x] Cloudinary configration  to ENV only .
+```JavaScript
+    import { v2 as cloudinary } from "cloudinary";
+
+    (async function() {
+
+        // Configuration
+        cloudinary.config({ 
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+            api_key: process.env.CLOUDINARY_API_KEY, 
+            api_secret: process.env.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+        })
+    });
+
+```
+## Cloudinary Configration !! 
+```JavaScript
+
+const uploadOnCloudinary = async (localFilePath)=>{
+    try {
+        if(!localFilePath) return null;
+        //upload the file on cloudinary 
+        const response = await cloudinary.uploader.upload(localFilePath, {
+            resource_type: "auto"
+        })
+        // file has been uploaded successfully
+        console.log("file is uploaded on cloudinary",response.url);
+        return response;
+        
+    } catch (error) {
+        fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload operation got failed
+        return null;
+    }
+}
+export { uploadOnCloudinary };
 ```

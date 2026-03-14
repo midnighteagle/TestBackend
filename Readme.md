@@ -12,7 +12,7 @@
 - [x] It asking for Description (describe your project by own: like:- revising the backend for the starting the project by new one learning.)
 - [x] It asking for entry points :- give as by default.
 - [x] again it asking for the test Commands :- if you give the test commands then system  putted in by default.
-- [x] It asking for git repo : you can set it otherwise do it later(for now i dont pu the git repo do it later.).
+- [x] It asking for git repo : you can set it otherwise do it later(for now i dont put the git repo do it later.).
 - [x] It asking for keywords:  revising,backend,myself,helpingMe, ChaiAurCode
 - [x] Then it Asking for the author then put the name of the developer who is working on it.
 - [x] Then it is asking for the licence : keep it default
@@ -301,3 +301,38 @@ userSchema.methods.isPasswordCorrect = async function (password){
 }
 
 ```
+
+- ### lets talk about the cloudunary.
+- cloudinary is used to store the images on the cloud that is uploaded by the user 
+- to more about it [Click Here](https://cloudinary.com/documentation/upload_widget)
+``` bash 
+    npm i cloudinary
+```
+- ### lets talk about the multer 
+- to more about it [Click Here](https://www.npmjs.com/package/multer)
+- it is used to handling of the file. via multer 
+``` bash 
+    npm i multer  
+```
+- ## lets code with the cloudinary 
+implemetation is done in the CodeStep.md.
+```javaScript
+    import { v2 as cloudinary } from 'cloudinary';
+
+    (async function() {
+
+    // Configuration
+    cloudinary.config({ 
+        cloud_name: 'dok66hhsm', 
+        api_key: '754554529945951', 
+        api_secret: '<your_api_secret>' // Click 'View API Keys' above to copy your API secret
+    });
+    })
+```
+- lets talk about the file System (fs);
+- it is used to manage the file , if you want to know about more about it the [Click Me]( https://nodejs.org/api/fs.html)
+- it there is function that is unlink function, it is used to unlink the file from that place but it is not delete the file , To know more about the function  [click here](https://nodejs.org/api/fs.html#fspromisesunlinkpath)
+
+- ### [x] Lets talk About the multer 
+by the help of the multer that is help to store the files in the storage.
+ 
