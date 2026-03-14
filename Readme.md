@@ -335,4 +335,9 @@ implemetation is done in the CodeStep.md.
 
 - ### [x] Lets talk About the multer 
 by the help of the multer that is help to store the files in the storage.
- 
+
+
+- [x]User Routes 
+- in the routes section there is a user.routes.js file. that control or redirect to the user.controller.js file.
+- app.use("api/v1/users", userRouter);
+- by the help of users address that route to the router when I put in the url box 
